@@ -1,0 +1,22 @@
+services:
+
+  - type: web 
+    name: webdis
+    runtime: node
+    repo: https://github.com/catri-01/ServerlessProjectBlueprint.git
+    region: Frankfurt
+    branch: main
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    envVars:
+      - key: DATABASE_ENV
+        fromDatabase:
+          name: serverlessprojectblueprint
+          property: connectionString
+    
+
+databases:
+  - name : serverlessprojectblueprint
+    databaseName : ServerlessBluedb
+    region: Frankfurt
